@@ -10,6 +10,7 @@
 #include <Magnum/Primitives/Icosphere.h>
 #include <Magnum/Primitives/Line.h>
 
+#include "BeltedEllipsoid.h"
 #include "assets/Roboto_Bold_ttf.h"
 #include "assets/Roboto_Regular_ttf.h"
 
@@ -116,7 +117,8 @@ McRtcGui::McRtcGui(const Arguments & arguments)
 
   axisMesh_ = MeshTools::compile(Primitives::axis3D());
   cubeMesh_ = MeshTools::compile(Primitives::cubeSolid());
-  sphereMesh_ = MeshTools::compile(Primitives::icosphereSolid(2));
+  //sphereMesh_ = MeshTools::compile(Primitives::icosphereSolid(2));
+  sphereMesh_ = MeshTools::compile(Primitives::beltedEllipsoid(32, 32, 5, 3, 2));
 }
 
 auto McRtcGui::importData(const std::string & path) -> ImportedMesh &

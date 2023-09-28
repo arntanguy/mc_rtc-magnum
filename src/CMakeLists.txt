@@ -10,6 +10,9 @@ if(MC_RTC_MAGNUM_BUILD_INTERFACE)
   set(ImGuizmo_DIR ${PROJECT_SOURCE_DIR}/ext/ImGuizmo)
   set(ImGuizmo_SRC ${ImGuizmo_DIR}/ImGuizmo.h ${ImGuizmo_DIR}/ImGuizmo.cpp)
 
+  set(paramesh_DIR ${PROJECT_SOURCE_DIR}/ext/paramesh)
+  set(paramesh_SRC ${paramesh_DIR}/mesh_generators.hpp ${paramesh_DIR}/mesh_generators.cpp ${paramesh_DIR}/mesh.hpp ${paramesh_DIR}/mesh.cpp)
+
   add_subdirectory(mc_rtc-imgui)
 
   set(project_SRC
@@ -23,6 +26,8 @@ if(MC_RTC_MAGNUM_BUILD_INTERFACE)
     Mesh.cpp
     Primitives.h
     Primitives.cpp
+    BeltedEllipsoid.h
+    BeltedEllipsoid.cpp
     widgets/Arrow.h
     widgets/Force.h
     widgets/Point3D.cpp
@@ -43,13 +48,14 @@ if(MC_RTC_MAGNUM_BUILD_INTERFACE)
     ${mc_rtc-imgui-HDR}
   )
 
-  add_executable(${PROJECT_NAME} ${project_SRC} ${ImGuizmo_SRC} ${implot_SRC})
+  add_executable(${PROJECT_NAME} ${project_SRC} ${ImGuizmo_SRC} ${implot_SRC} ${paramesh_SRC})
 
   target_compile_definitions(${PROJECT_NAME} PRIVATE -DMAGNUM_IMGUIINTEGRATION_USER_CONFIG="custom_imconfig.h")
-  target_include_directories(${PROJECT_NAME} PRIVATE SYSTEM ${CMAKE_CURRENT_LIST_DIR}/imconfig ${ImGuizmo_DIR} ${implot_DIR})
+  target_include_directories(${PROJECT_NAME} PRIVATE SYSTEM ${CMAKE_CURRENT_LIST_DIR}/imconfig ${ImGuizmo_DIR} ${implot_DIR} ${paramesh_DIR})
   target_link_libraries(${PROJECT_NAME} PRIVATE
       mc_rtc::mc_control
       mc_rtc::mc_control_client
+      paramesh
       Magnum::Application
       Magnum::GL
       Magnum::Magnum

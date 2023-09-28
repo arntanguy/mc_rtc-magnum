@@ -22,6 +22,7 @@ if(MC_RTC_MAGNUM_BUILD_INTERFACE)
 
   add_subdirectory(ext/glfw EXCLUDE_FROM_ALL)
   add_subdirectory(ext/corrade EXCLUDE_FROM_ALL)
+  add_subdirectory(ext/paramesh EXCLUDE_FROM_ALL)
 
   add_subdirectory(ext/magnum EXCLUDE_FROM_ALL)
 

@@ -25,3 +25,6 @@
 [submodule "ext/implot"]
 	path = ext/implot
 	url = https://github.com/epezent/implot
+[submodule "ext/paramesh"]
+	path = ext/paramesh
+	url = git@github.com:arntanguy/paramesh.git
